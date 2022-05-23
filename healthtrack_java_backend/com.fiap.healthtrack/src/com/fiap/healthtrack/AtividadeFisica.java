@@ -1,54 +1,75 @@
 package com.fiap.healthtrack;
 
+
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AtividadeFisica extends Exercicio implements ICrud<AtividadeFisica>{
-    // Lista de clientes para simular o armazenamento de dados
-    private List<AtividadeFisica> atividadeFisicas = new ArrayList<AtividadeFisica>();
+public class AtividadeFisica {
+     // Lista de clientes para simular o armazenamento de dados
+     private List<AtividadeFisica> exercicios = new ArrayList<AtividadeFisica>();
 
-    // Atributos
-    private int idAtividadeFisica;
+    //Atributos
+    private int idExercicio;
+    private int tipoExercicio;
+    private String descricao;
     private LocalTime tempo;
     private int repeticoes;
     private int queimaCalorica;
+	private boolean privado;
     private LocalDateTime dataCriacao;
-    private LocalDateTime dataAlteracao; 
-    private Exercicio exercicio = new Exercicio();
-    private Cliente cliente = new Cliente();
+    private LocalDateTime dataAlteracao;
+    private Parceiro parceiro = new Parceiro();
 
     public AtividadeFisica() {
     }
 
-    public AtividadeFisica(int idAtividadeFisica,LocalTime tempo, int repeticoes, int queimaCalorica,LocalDateTime dataCriacao, LocalDateTime dataAlteracao,int idExercicio ,int idCliente) {
-        this.idAtividadeFisica = idAtividadeFisica;
+    // GET SET
+    public AtividadeFisica(int idExercicio, TipoExercicio tipoExercicio, String descricao,LocalTime tempo, int repeticoes, int queimaCalorica,boolean privado,LocalDateTime dataCriacao, LocalDateTime dataAlteracao, int idParceiro)
+    {
+        this.idExercicio = idExercicio;
+        this.tipoExercicio = tipoExercicio.ordinal();
+        this.descricao = descricao;
         this.tempo = tempo;
         this.repeticoes = repeticoes;
         this.queimaCalorica = queimaCalorica;
+		this.privado = privado;
         this.dataCriacao = dataCriacao;
         this.dataAlteracao = dataAlteracao;
-        this.exercicio.setIdExercicio(idExercicio);
-        this.cliente.setIdCliente(idCliente);
+        this.parceiro.setIdParceiro(idParceiro);
     }
 
-    // GET SET
-
-    public void setIdAtividadeFisica(int idAtividadeFisica) {
-		this.idAtividadeFisica = idAtividadeFisica;
+    public void setIdExercicio(int idExercicio) {
+		this.idExercicio = idExercicio;
 	}
 
-	public int getIdAtividadeFisica() {
-		return idAtividadeFisica;
+	public int getIdExercicio() {
+		return idExercicio;
 	}
 
-    public void setTempo(LocalTime tempo) {
+    public void setTipoExercicio(TipoExercicio tipoExercicio) {
+		this.tipoExercicio = tipoExercicio.ordinal();
+	}
+
+	public int getTipoExercicio() {
+		return tipoExercicio;
+	}
+
+    public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+    public void setTempo(LocalTime  tempo) {
 		this.tempo = tempo;
 	}
 
-	public LocalTime getTempo() {
+	public LocalTime  getTempo() {
 		return tempo;
 	}
 
@@ -68,6 +89,14 @@ public class AtividadeFisica extends Exercicio implements ICrud<AtividadeFisica>
 		return queimaCalorica;
 	}
 
+	public void setPrivado(Boolean privado) {
+		this.privado = privado;
+	}
+
+	public boolean getPrivado() {
+		return privado;
+	}
+
     public LocalDateTime getDataCriacao() {
 		return dataCriacao;
 	}
@@ -84,45 +113,21 @@ public class AtividadeFisica extends Exercicio implements ICrud<AtividadeFisica>
 		this.dataAlteracao = dataAlteracao;
 	}
 
-    public int getIdCliente() {
-		return cliente.getIdCliente();
+    public void setIdParceiro(int idParceiro) {
+		this.parceiro.setIdParceiro(idParceiro);
 	}
 
-	public void setIdCliente(int idCliente) {
-		this.cliente.setIdCliente(idCliente);
+	public int getIdParceiro() {
+		return parceiro.getIdParceiro();
 	}
-
-    public int getIdExercicio() {
-		return exercicio.getIdExercicio();
-	}
-
-	public void setIdExercicio(int idExercicio) {
-		this.exercicio = new Exercicio().consultarExercicio(idExercicio);
-	}
-
-    //Metodos
-    @Override
-    public AtividadeFisica Consultar(String id) {
-        return atividadeFisicas.stream().filter(x -> x.getIdExercicio() == Integer.parseInt(id)).collect(Collectors.toList()).get(0);
+    
+    public AtividadeFisica consultarExercicio(int idExercicio)
+    {
+        return exercicios.stream().filter(x -> x.getIdExercicio() == idExercicio).collect(Collectors.toList()).get(0);
     }
 
-    @Override
-    public void Adicionar(AtividadeFisica item) {
-        atividadeFisicas.add(item);        
+    public void AdicionarExercicio(AtividadeFisica item)
+    {
+        exercicios.add(item);
     }
-
-    @Override
-    public void Atualizar(AtividadeFisica item) {
-        atividadeFisicas.removeIf(x -> x.getIdAtividadeFisica() == item.getIdAtividadeFisica());
-        atividadeFisicas.add(item);         
-    }
-
-    @Override
-    public void Deletar(String id) {
-        atividadeFisicas.removeIf(x -> x.getIdAtividadeFisica() == Integer.parseInt(id));                                 
-    }
-    public List<AtividadeFisica> ListarPorIdCliente(int idCliente) {
-        return atividadeFisicas.stream().filter(x -> x.cliente.getIdCliente() == idCliente).toList();
-    }
-
 }
