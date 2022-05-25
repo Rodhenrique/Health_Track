@@ -2,73 +2,68 @@ package com.fiap.healthtrack;
 
 import java.time.LocalDateTime;
 
-public abstract class Conta {
-    private int idConta;
-	private String username;
-    private String email;	
-	private String senha;
-	private LocalDateTime dataCriacao;	
-	private LocalDateTime dataAlteracao;
+public class Conta {
+    private int id_conta;
+    private String username;
+    private String senha;
+    private LocalDateTime dt_criacao;
+    private LocalDateTime dt_alteracao;
+    private int t_cliente_id_cliente;
+    private int t_parceiro_id_parceiro;
+    
+	public int getId_conta() {
+		return id_conta;
+	}
 	
-    // GET SET
-	public Conta() {
-		
+	public void setId_conta(int id_conta) {
+		this.id_conta = id_conta;
 	}
-
-	public Conta(int idConta, String username, String email, String senha, LocalDateTime dataCriacao,LocalDateTime dataAlteracao) {
-		this.idConta = idConta;
-        this.username = username;
-        this.email = email;
-        this.senha = senha;
-        this.dataCriacao = dataCriacao;
-        this.dataAlteracao = dataAlteracao;
-	}
-
-	protected int getIdConta() {
-		return idConta;
-	}
-
-    protected void setIdConta(int idConta) {
-        this.idConta = idConta;
-	}
-
+	
 	public String getUsername() {
 		return username;
 	}
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getEmail() {
-		return email;
+	
+	public void setUsername(String username) {
+		this.username = username;
 	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-    public String getSenha() {
+	
+	public String getSenha() {
 		return senha;
 	}
-
+	
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-
-    public LocalDateTime getDataCriacao() {
-		return dataCriacao;
+	
+	public LocalDateTime getDt_criacao() {
+		return dt_criacao;
 	}
-
-	public void setDataCriacao(LocalDateTime dataCriacao) {
-		this.dataCriacao = dataCriacao;
+	
+	public void setDt_criacao(LocalDateTime dt_criacao) {
+		this.dt_criacao = dt_criacao;
 	}
-    
-    public LocalDateTime getDataAlteracao() {
-		return dataAlteracao;
+	
+	public LocalDateTime getDt_alteracao() {
+		return dt_alteracao;
 	}
-
-	public void setDataAlteracao(LocalDateTime dataAlteracao) {
-		this.dataAlteracao = dataAlteracao;
+	
+	public void setDt_alteracao(LocalDateTime dt_alteracao) {
+		this.dt_alteracao = dt_alteracao;
+	}
+	
+	public int getT_cliente_id_cliente() {
+		return t_cliente_id_cliente;
+	}
+	
+	public void setT_cliente_id_cliente(int t_cliente_id_cliente) {
+		this.t_cliente_id_cliente = t_cliente_id_cliente;
+	}
+	
+	public int getT_parceiro_id_parceiro() {
+		return t_parceiro_id_parceiro;
+	}
+	
+	public void setT_parceiro_id_parceiro(int t_parceiro_id_parceiro) {
+		this.t_parceiro_id_parceiro = t_parceiro_id_parceiro;
 	}
 }

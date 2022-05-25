@@ -1,112 +1,89 @@
 package com.fiap.healthtrack;
 
-import java.util.ArrayList;
-
-public class Alimento implements ICrud<Alimento>{
-    // Lista de clientes para simular o armazenamento de dados
-    private List<Alimento> alimentos = new ArrayList<Alimento>();
-
-    // Atributos
-    private int idAlimento;
-    private int tipo;
-	private String descricao;
+public class Alimento {
+	private int id_alimento;
+	private String nm_alimento;
+	private String tipo_alimento;
+	private float calorias;
+	private float carboidratos;
+	private float proteinas;
+	private float gorduras;
 	private float porcao;
-    private double quantidadeGrama;
-    private int calorias;
-    private boolean privado;
-    // GET SET
-    public Alimento() {
-    }
-
-    public Alimento(int idAlimento, TipoAlimento tipo, String descricao, float porcao, double quantidadeGrama, int calorias, boolean privado) {
-        this.idAlimento = idAlimento;
-        this.tipo = tipo.ordinal();
-        this.descricao = descricao;
-        this.porcao = porcao;
-        this.quantidadeGrama = quantidadeGrama;
-        this.calorias = calorias;
-        this.privado = privado;
-    }
-    
-    public int getIdAlimento() {
-		return idAlimento;
-	}
-
-	public void setIdAlimento(int idAlimento) {
-		this.idAlimento = idAlimento;
-	}
-
-    public int getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(TipoAlimento tipo) {
-		this.tipo = tipo.ordinal();
-	}
-
-    public String getDescricao() {
-		return descricao;
-	}
-
-    public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-    public Float getPorcao() {
-		return porcao;
-	}
-
-    public void setPorcao(Float porcao) {
+	
+	public Alimento(int id_alimento, String nm_alimento, String tipo_alimento, float calorias, float carboidratos,float proteinas, float gorduras, float porcao) {
+		super();
+		this.id_alimento = id_alimento;
+		this.nm_alimento = nm_alimento;
+		this.tipo_alimento = tipo_alimento;
+		this.calorias = calorias;
+		this.carboidratos = carboidratos;
+		this.proteinas = proteinas;
+		this.gorduras = gorduras;
 		this.porcao = porcao;
 	}
 
-    public double getQuantidadeGrama() {
-		return quantidadeGrama;
+	public int getId_alimento() {
+		return id_alimento;
 	}
-
-    public void setQuantidadeGrama(Double quantidadeGrama) {
-		this.quantidadeGrama = quantidadeGrama;
+	
+	public void setId_alimento(int id_alimento) {
+		this.id_alimento = id_alimento;
 	}
-    
-    public int getCalorias() {
+	
+	public String getNm_alimento() {
+		return nm_alimento;
+	}
+	
+	public void setNm_alimento(String nm_alimento) {
+		this.nm_alimento = nm_alimento;
+	}
+	
+	public String getTipo_alimento() {
+		return tipo_alimento;
+	}
+	
+	public void setTipo_alimento(String tipo_alimento) {
+		this.tipo_alimento = tipo_alimento;
+	}
+	
+	public float getCalorias() {
 		return calorias;
 	}
-
-    public void setCalorias(int calorias) {
+	
+	public void setCalorias(float calorias) {
 		this.calorias = calorias;
 	}
-
-    public boolean getPrivado() {
-		return privado;
+	
+	public float getCarboidratos() {
+		return carboidratos;
 	}
-
-    public void setPrivado(Boolean privado) {
-		this.privado = privado;
+	
+	public void setCarboidratos(float carboidratos) {
+		this.carboidratos = carboidratos;
 	}
-
-    // Metodos      
-    @Override
-    public Alimento Consultar(String id) {
-        return alimentos.stream().filter(x -> x.getIdAlimento() == Integer.parseInt(id)).collect(Collectors.toList()).get(0);
-    }
-
-    @Override
-    public void Adicionar(Alimento item) {
-        alimentos.add(item);        
-    }
-
-    @Override
-    public void Atualizar(Alimento item) {        
-        alimentos.removeIf(x -> x.getIdAlimento() == item.getIdAlimento());
-        alimentos.add(item);  
-    }
-
-    @Override
-    public void Deletar(String id) {
-        alimentos.removeIf(x -> x.getIdAlimento() == Integer.parseInt(id));                
-    }
-   
-    public List<Alimento> Listar() {
-        return alimentos;
-    }
+	
+	public float getProteinas() {
+		return proteinas;
+	}
+	
+	public void setProteinas(float proteinas) {
+		this.proteinas = proteinas;
+	}
+	
+	public float getGorduras() {
+		return gorduras;
+	}
+	
+	public void setGorduras(float gorduras) {
+		this.gorduras = gorduras;
+	}
+	
+	public float getPorcao() {
+		return porcao;
+	}
+	
+	public void setPorcao(float porcao) {
+		this.porcao = porcao;
+	}
+	
 }

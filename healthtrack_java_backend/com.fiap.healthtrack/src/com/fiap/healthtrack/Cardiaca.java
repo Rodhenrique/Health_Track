@@ -1,115 +1,70 @@
 package com.fiap.healthtrack;
 
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
-
-public class Cardiaca implements ICrud<Cardiaca> {
-    // Lista de clientes para simular o armazenamento de dados
-    private List<Cardiaca> pressaoArterials = new ArrayList<Cardiaca>();
-
-     // Atributos
-    private int idPressaoArterial;
-    private int sistolica;
-	private int diastolica;
-	private float bpm;
-    private Cliente cliente = new Cliente();
-    private LocalDateTime dataCriacao;	
-    private LocalDateTime dataAlteracao;
-
-    // GET SET
-
-    public Cardiaca() {
-    }
-
-    public Cardiaca(int idPressaoArterial,int sistolica, int diastolica, float bpm, int idCliente, LocalDateTime dataCriacao, LocalDateTime dataAlteracao) {
-        this.idPressaoArterial = idPressaoArterial;
-        this.sistolica = sistolica;
-        this.diastolica = diastolica;
-        this.bpm = bpm;
-        this.cliente.setIdCliente(idCliente);
-        this.dataCriacao = dataCriacao;
-        this.dataAlteracao = dataAlteracao;
-    }
-  
-    public int getIdPressaoArterial() {
-		return idPressaoArterial;
+public class Cardiaca {
+	private int id_cardiaco;
+	private LocalDateTime dt_registro_cardiaco;
+	private float nr_bpm;
+	private String ds_bpm;
+	private float nr_pressao_arterial;
+	private String ds_pressao_arterial;
+	private int t_cliente_id_cliente;
+	
+	public int getId_cardiaco() {
+		return id_cardiaco;
 	}
-
-	public void setIdPressaoArteria(int idPressaoArterial) {
-		this.idPressaoArterial = idPressaoArterial;
+	
+	public void setId_cardiaco(int id_cardiaco) {
+		this.id_cardiaco = id_cardiaco;
 	}
-
-	public int getSistolica() {
-		return sistolica;
+	
+	public LocalDateTime getDt_registro_cardiaco() {
+		return dt_registro_cardiaco;
 	}
-
-	public void setSistolica(int sistolica) {
-		this.sistolica = sistolica;
+	
+	public void setDt_registro_cardiaco(LocalDateTime dt_registro_cardiaco) {
+		this.dt_registro_cardiaco = dt_registro_cardiaco;
 	}
-
-	public int getDiastolica() {
-		return diastolica;
+	
+	public float getNr_bpm() {
+		return nr_bpm;
 	}
-
-	public void setDiastolica(int diastolica) {
-		this.diastolica = diastolica;
+	
+	public void setNr_bpm(float nr_bpm) {
+		this.nr_bpm = nr_bpm;
 	}
-
-	public float getBpm() {
-		return bpm;
+	
+	public String getDs_bpm() {
+		return ds_bpm;
 	}
-
-    public LocalDateTime getDataCriacao() {
-		return dataCriacao;
+	
+	public void setDs_bpm(String ds_bpm) {
+		this.ds_bpm = ds_bpm;
 	}
-
-	public void setDataCriacao(LocalDateTime dataCriacao) {
-		this.dataCriacao = dataCriacao;
+	
+	public float getNr_pressao_arterial() {
+		return nr_pressao_arterial;
 	}
-    
-    public LocalDateTime getDataAlteracao() {
-		return dataAlteracao;
+	
+	public void setNr_pressao_arterial(float nr_pressao_arterial) {
+		this.nr_pressao_arterial = nr_pressao_arterial;
 	}
-
-	public void setDataAlteracao(LocalDateTime dataAlteracao) {
-		this.dataAlteracao = dataAlteracao;
+	
+	public String getDs_pressao_arterial() {
+		return ds_pressao_arterial;
 	}
-
-    public int getIdCliente() {
-		return cliente.getIdCliente();
+	
+	public void setDs_pressao_arterial(String ds_pressao_arterial) {
+		this.ds_pressao_arterial = ds_pressao_arterial;
 	}
-
-	public void setIdCliente(int idCliente) {
-		this.cliente.setIdCliente(idCliente);
+	
+	public int getT_cliente_id_cliente() {
+		return t_cliente_id_cliente;
 	}
-    
-    // Metodos
-    @Override
-    public Cardiaca Consultar(String id) {
-        return pressaoArterials.stream().filter(x -> x.getIdPressaoArterial() == Integer.parseInt(id)).collect(Collectors.toList()).get(0);
-    }
-
-    @Override
-    public void Adicionar(Cardiaca item) {
-        pressaoArterials.add(item);        
-    }
-
-    @Override
-    public void Atualizar(Cardiaca item) {
-        pressaoArterials.removeIf(x -> x.getIdPressaoArterial() == item.getIdPressaoArterial());
-        pressaoArterials.add(item);        
-    }
-
-    @Override
-    public void Deletar(String id) {
-        pressaoArterials.removeIf(x -> x.getIdPressaoArterial() == Integer.parseInt(id));                
-    }
-
-    public List<Cardiaca> ListarPorIdCliente(int idCliente) {
-        return pressaoArterials.stream().filter(x -> x.cliente.getIdCliente() == idCliente).toList();
-    }
+	
+	public void setT_cliente_id_cliente(int t_cliente_id_cliente) {
+		this.t_cliente_id_cliente = t_cliente_id_cliente;
+	}
+	
 }

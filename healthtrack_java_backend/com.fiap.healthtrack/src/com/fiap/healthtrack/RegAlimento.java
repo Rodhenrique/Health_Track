@@ -1,135 +1,65 @@
 package com.fiap.healthtrack;
 
+import java.util.Date;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-
-public class RegAlimento implements ICrud<RegAlimento>{
-    // Lista de clientes para simular o armazenamento de dados
-    private List<RegAlimento> alimentoConsumidos = new ArrayList<RegAlimento>();
+public class RegAlimento {
+    private int id_registro;
+    private Date dt_registro;
+    private int qnt_alimento;
+    private int t_cliente_id_cliente;
+    private int t_alimento_id_alimento;
     
-    // Atributos
-    private int idAlimentoConsumido;
-    private Cliente cliente = new Cliente();
-    private Alimento alimento = new Alimento();
-    private float porcao;
-    private double quantidadeGrama;
-    private int calorias;
-    private LocalDateTime dataCriacao;	
-    private LocalDateTime dataAlteracao;
+    public RegAlimento()
+    {
+    	
+    }
     
-    // GET SET
-    public RegAlimento() {
-
-    }
-
-    public RegAlimento(int idAlimentoConsumido, int idCliente, int idAlimento,float porcao,double quantidadeGrama,int calorias, LocalDateTime dataCriacao, LocalDateTime dataAlteracao) {
-        this.idAlimentoConsumido = idAlimentoConsumido;
-        this.cliente.setIdCliente(idCliente);
-        this.alimento.setIdAlimento(idAlimento);
-        this.porcao = porcao;
-        this.quantidadeGrama = quantidadeGrama;
-        this.calorias = calorias;
-        this.dataCriacao = dataCriacao;
-        this.dataAlteracao = dataAlteracao;
-    }
-
-    public int getIdAlimentoConsumido() {
-		return idAlimentoConsumido;
+	public RegAlimento(int id_registro, Date dt_registro, int qnt_alimento, int t_cliente_id_cliente, int t_alimento_id_alimento) {
+		super();
+		this.id_registro = id_registro;
+		this.dt_registro = dt_registro;
+		this.qnt_alimento = qnt_alimento;
+		this.t_cliente_id_cliente = t_cliente_id_cliente;
+		this.t_alimento_id_alimento = t_alimento_id_alimento;
 	}
 
-	public void setIdAlimentoConsumido(int idAlimentoConsumido) {
-		this.idAlimentoConsumido = idAlimentoConsumido;
+	public int getId_registro() {
+		return id_registro;
+	}
+	
+	public void setId_registro(int id_registro) {
+		this.id_registro = id_registro;
+	}
+	
+	public Date getDt_registro() {
+		return dt_registro;
 	}
 
-    public int getIdCliente() {
-		return cliente.getIdCliente();
+	public void setDt_registro(Date dt_registro) {
+		this.dt_registro = dt_registro;
 	}
 
-	public void setIdCliente(int idCliente) {
-		this.cliente.setIdCliente(idCliente);
+	public int getQnt_alimento() {
+		return qnt_alimento;
 	}
-
-    public int getAlimento() {
-		return alimento.getIdAlimento();
+	
+	public void setQnt_alimento(int qnt_alimento) {
+		this.qnt_alimento = qnt_alimento;
 	}
-
-	public void setAlimento(int idAlimento) {
-		this.alimento.setIdAlimento(idAlimento);
+	
+	public int getT_cliente_id_cliente() {
+		return t_cliente_id_cliente;
 	}
-
-    public Float getPorcao() {
-		return porcao;
+	
+	public void setT_cliente_id_cliente(int t_cliente_id_cliente) {
+		this.t_cliente_id_cliente = t_cliente_id_cliente;
 	}
-
-    public void setPorcao(Float porcao) {
-		this.porcao = porcao;
+	
+	public int getT_alimento_id_alimento() {
+		return t_alimento_id_alimento;
 	}
-
-    public double getQuantidadeGrama() {
-		return quantidadeGrama;
+	
+	public void setT_alimento_id_alimento(int t_alimento_id_alimento) {
+		this.t_alimento_id_alimento = t_alimento_id_alimento;
 	}
-
-    public void setQuantidadeGrama(Double quantidadeGrama) {
-		this.quantidadeGrama = quantidadeGrama;
-	}
-    
-    public int getCalorias() {
-		return calorias;
-	}
-
-    public void setCalorias(int calorias) {
-		this.calorias = calorias;
-	}
-
-    public LocalDateTime getDataCriacao() {
-		return dataCriacao;
-	}
-
-	public void setDataCriacao(LocalDateTime dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
-    
-    public LocalDateTime getDataAlteracao() {
-		return dataAlteracao;
-	}
-
-	public void setDataAlteracao(LocalDateTime dataAlteracao) {
-		this.dataAlteracao = dataAlteracao;
-	}
-    
-    // Metodos      
-    public List<RegAlimento> Listar(int idCliente) {
-        return alimentoConsumidos.stream().filter(x -> x.cliente.getIdCliente() == idCliente).toList();
-    }
-
-    @Override
-    public RegAlimento Consultar(String id) {
-        return alimentoConsumidos.stream().filter(x -> x.getIdAlimentoConsumido() == Integer.parseInt(id)).collect(Collectors.toList()).get(0);
-    }
-
-
-    @Override
-    public void Adicionar(RegAlimento item) {
-        alimentoConsumidos.add(item);        
-    }
-
-
-    @Override
-    public void Atualizar(RegAlimento item) {
-        alimentoConsumidos.removeIf(x -> x.getIdAlimentoConsumido() == item.getIdAlimentoConsumido());
-        alimentoConsumidos.add(item);        
-    }
-
-
-    @Override
-    public void Deletar(String id) {
-        alimentoConsumidos.removeIf(x -> x.getIdAlimentoConsumido() == Integer.parseInt(id));                
-    }
-
-    public List<RegAlimento> ListarPorIdCliente(int idCliente) {
-        return alimentoConsumidos.stream().filter(x -> x.cliente.getIdCliente() == idCliente).toList();
-    }
 }

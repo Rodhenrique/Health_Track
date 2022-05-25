@@ -1,108 +1,42 @@
 package com.fiap.healthtrack;
 
-
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
-public class Peso implements ICrud<Peso>{
-    // Lista de clientes para simular o armazenamento de dados
-    private List<Peso> pesos = new ArrayList<Peso>();
-
-    // Atributos
-    private int idPeso;
-    private float kilos;
-    private LocalDateTime dataCriacao;	
-    private LocalDateTime dataAlteracao;
-    private Cliente cliente = new Cliente();
+public class Peso{
+    private int id_peso;
+    private LocalDateTime dt_pesagem;
+    private int nr_peso;
+    private int t_cliente_id_cliente;
     
-    
-    // GET SET
-    public Peso() {
-    }
-
-    public Peso(int idPeso, float kilos, LocalDateTime dataCriacao,LocalDateTime dataAlteracao, int idCliente) {
-        this.idPeso = idPeso;
-        this.kilos = kilos;
-        this.dataCriacao = dataCriacao;
-        this.dataAlteracao = dataAlteracao;
-        this.cliente.setIdCliente(idCliente);
-    }
-    
-
-    public void setIdPeso(int idPeso)
-    {
-        this.idPeso = idPeso;
-    }
-
-    public int getIdPeso()
-    {
-        return idPeso;
-    }
-
-    public void setKilos(Float kilos)
-    {
-        this.kilos = kilos;
-    }
-
-    public float getKilos()
-    {
-        return kilos;
-    }
-
-    public LocalDateTime getDataCriacao() {
-		return dataCriacao;
+	public int getId_peso() {
+		return id_peso;
 	}
-
-	public void setDataCriacao(LocalDateTime dataCriacao) {
-		this.dataCriacao = dataCriacao;
+	
+	public void setId_peso(int id_peso) {
+		this.id_peso = id_peso;
 	}
-    
-    public LocalDateTime getDataAlteracao() {
-		return dataAlteracao;
+	
+	public LocalDateTime getDt_pesagem() {
+		return dt_pesagem;
 	}
-
-	public void setDataAlteracao(LocalDateTime dataAlteracao) {
-		this.dataAlteracao = dataAlteracao;
+	
+	public void setDt_pesagem(LocalDateTime dt_pesagem) {
+		this.dt_pesagem = dt_pesagem;
 	}
-
-    public int getIdCliente() {
-		return cliente.getIdCliente();
+	
+	public int getNr_peso() {
+		return nr_peso;
 	}
-
-	public void setIdCliente(int idCliente) {
-		this.cliente.setIdCliente(idCliente);
+	
+	public void setNr_peso(int nr_peso) {
+		this.nr_peso = nr_peso;
 	}
-
-    // Metodos
-    @Override
-    public Peso Consultar(String id) {
-        return pesos.stream().filter(x -> x.getIdPeso() == Integer.parseInt(id)).collect(Collectors.toList()).get(0);
-    }
-
-    @Override
-    public void Adicionar(Peso item) {
-        pesos.add(item);        
-    }
-
-    @Override
-    public void Atualizar(Peso item) {
-        pesos.removeIf(x -> x.getIdPeso() == item.getIdPeso());
-        pesos.add(item);         
-    }
-
-    @Override
-    public void Deletar(String id) { 
-        pesos.removeIf(x -> x.getIdPeso() == Integer.parseInt(id));                       
-    }
-
-    public List<Peso> ListarPorIdCliente(int idCliente) {
-        return pesos.stream().filter(x -> x.cliente.getIdCliente() == idCliente).toList();
-    }
-
-    public float obterImc(Float altura, float kilos)
-    {
-        return (altura * altura) / kilos;
-    }
+	
+	public int getT_cliente_id_cliente() {
+		return t_cliente_id_cliente;
+	}
+	
+	public void setT_cliente_id_cliente(int t_cliente_id_cliente) {
+		this.t_cliente_id_cliente = t_cliente_id_cliente;
+	}
 }

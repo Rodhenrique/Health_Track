@@ -1,79 +1,58 @@
 package com.fiap.healthtrack;
 
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-
-public class Parceiro extends Usuario implements ICrud<Parceiro>{
-    // Lista de clientes para simular o armazenamento de dados
-    private List<Parceiro> parceiros = new ArrayList<Parceiro>();
+public class Parceiro {
+    private int id_parceiro;
+    private String nm_parceiro;
+    private int especialidade;
+    private int tipo_contrato;
+    private int t_conta_id_conta;
+    private int t_localidade_id_localidade;
     
-    // Atributos
-	private int tipoParceiro;
-	private String descricaoParceiro;	
+	public int getId_parceiro() {
+		return id_parceiro;
+	}
 	
-    // GET SET
-    public Parceiro() {
-    }
-    
-    public Parceiro(int idCliente, String nome, String sobrenome, String endereco, LocalDateTime dataNascimento, Genero genero, TipoParceiro tipoParceiro, String descricaoParceiro, String username, String email, String senha)
-    {
-        setUsuario(idCliente, nome, sobrenome, endereco, dataNascimento, genero,username,email,senha);
-        this.tipoParceiro = tipoParceiro.ordinal();
-        this.descricaoParceiro = descricaoParceiro;
-    }
-    
-    public int getIdParceiro() {
-		return getIdUsuario();
+	public void setId_parceiro(int id_parceiro) {
+		this.id_parceiro = id_parceiro;
 	}
-
-    public void setIdParceiro(int idParceiro) {
-		setIdConta(idParceiro);
+	
+	public String getNm_parceiro() {
+		return nm_parceiro;
 	}
-
-	public String getDescricaoParceiro() {
-		return descricaoParceiro;
+	
+	public void setNm_parceiro(String nm_parceiro) {
+		this.nm_parceiro = nm_parceiro;
 	}
-
-	public void setDescricaoParceiro(String descricaoParceiro) {
-		this.descricaoParceiro = descricaoParceiro;
+	
+	public int getEspecialidade() {
+		return especialidade;
 	}
-
-	public int getTipoParceiro() {
-		return tipoParceiro;
+	
+	public void setEspecialidade(int especialidade) {
+		this.especialidade = especialidade;
 	}
-
-    public void setTipoParceiro(int tipoParceiro) {
-		this.tipoParceiro = tipoParceiro;
+	
+	public int getTipo_contrato() {
+		return tipo_contrato;
 	}
-
-    //Metodos
-    @Override
-    public Parceiro Consultar(String id) {
-        return parceiros.stream().filter(x -> x.getIdParceiro() == Integer.parseInt(id)).collect(Collectors.toList()).get(0);
-    }
-
-    @Override
-    public void Adicionar(Parceiro item) {
-        parceiros.add(item);                
-    }
-
-    @Override
-    public void Atualizar(Parceiro item) {
-        parceiros.removeIf(x -> x.getIdParceiro() == item.getIdParceiro());
-        parceiros.add(item);  
-    }
-
-    @Override
-    public void Deletar(String id) {
-        parceiros.removeIf(x -> x.getIdParceiro() == Integer.parseInt(id));                               
-    }
-
-    public List<Parceiro> Listar()
-    {
-        return parceiros;
-    }
+	
+	public void setTipo_contrato(int tipo_contrato) {
+		this.tipo_contrato = tipo_contrato;
+	}
+	
+	public int getT_conta_id_conta() {
+		return t_conta_id_conta;
+	}
+	
+	public void setT_conta_id_conta(int t_conta_id_conta) {
+		this.t_conta_id_conta = t_conta_id_conta;
+	}
+	
+	public int getT_localidade_id_localidade() {
+		return t_localidade_id_localidade;
+	}
+	
+	public void setT_localidade_id_localidade(int t_localidade_id_localidade) {
+		this.t_localidade_id_localidade = t_localidade_id_localidade;
+	}
 }

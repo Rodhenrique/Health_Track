@@ -6,9 +6,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class AlimentoConsumido implements ICrud<AlimentoConsumido>{
+public class RegAlimento implements ICrud<RegAlimento>{
     // Lista de clientes para simular o armazenamento de dados
-    private List<AlimentoConsumido> alimentoConsumidos = new ArrayList<AlimentoConsumido>();
+    private List<RegAlimento> alimentoConsumidos = new ArrayList<RegAlimento>();
     
     // Atributos
     private int idAlimentoConsumido;
@@ -21,11 +21,11 @@ public class AlimentoConsumido implements ICrud<AlimentoConsumido>{
     private LocalDateTime dataAlteracao;
     
     // GET SET
-    public AlimentoConsumido() {
+    public RegAlimento() {
 
     }
 
-    public AlimentoConsumido(int idAlimentoConsumido, int idCliente, int idAlimento,float porcao,double quantidadeGrama,int calorias, LocalDateTime dataCriacao, LocalDateTime dataAlteracao) {
+    public RegAlimento(int idAlimentoConsumido, int idCliente, int idAlimento,float porcao,double quantidadeGrama,int calorias, LocalDateTime dataCriacao, LocalDateTime dataAlteracao) {
         this.idAlimentoConsumido = idAlimentoConsumido;
         this.cliente.setIdCliente(idCliente);
         this.alimento.setIdAlimento(idAlimento);
@@ -101,24 +101,24 @@ public class AlimentoConsumido implements ICrud<AlimentoConsumido>{
 	}
     
     // Metodos      
-    public List<AlimentoConsumido> Listar(int idCliente) {
+    public List<RegAlimento> Listar(int idCliente) {
         return alimentoConsumidos.stream().filter(x -> x.cliente.getIdCliente() == idCliente).toList();
     }
 
     @Override
-    public AlimentoConsumido Consultar(String id) {
+    public RegAlimento Consultar(String id) {
         return alimentoConsumidos.stream().filter(x -> x.getIdAlimentoConsumido() == Integer.parseInt(id)).collect(Collectors.toList()).get(0);
     }
 
 
     @Override
-    public void Adicionar(AlimentoConsumido item) {
+    public void Adicionar(RegAlimento item) {
         alimentoConsumidos.add(item);        
     }
 
 
     @Override
-    public void Atualizar(AlimentoConsumido item) {
+    public void Atualizar(RegAlimento item) {
         alimentoConsumidos.removeIf(x -> x.getIdAlimentoConsumido() == item.getIdAlimentoConsumido());
         alimentoConsumidos.add(item);        
     }
@@ -129,7 +129,7 @@ public class AlimentoConsumido implements ICrud<AlimentoConsumido>{
         alimentoConsumidos.removeIf(x -> x.getIdAlimentoConsumido() == Integer.parseInt(id));                
     }
 
-    public List<AlimentoConsumido> ListarPorIdCliente(int idCliente) {
+    public List<RegAlimento> ListarPorIdCliente(int idCliente) {
         return alimentoConsumidos.stream().filter(x -> x.cliente.getIdCliente() == idCliente).toList();
     }
 }

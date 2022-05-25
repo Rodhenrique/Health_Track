@@ -1,133 +1,78 @@
 package com.fiap.healthtrack;
 
-
-import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class AtividadeFisica {
-     // Lista de clientes para simular o armazenamento de dados
-     private List<AtividadeFisica> exercicios = new ArrayList<AtividadeFisica>();
-
-    //Atributos
-    private int idExercicio;
-    private int tipoExercicio;
-    private String descricao;
-    private LocalTime tempo;
+	private int id_atividade_fisica;
+    private char nm_atividade;
+    private char ds_atividade;
+    private char categoria_atividade;
+    private float calorias;
     private int repeticoes;
-    private int queimaCalorica;
-	private boolean privado;
-    private LocalDateTime dataCriacao;
-    private LocalDateTime dataAlteracao;
-    private Parceiro parceiro = new Parceiro();
-
-    public AtividadeFisica() {
-    }
-
-    // GET SET
-    public AtividadeFisica(int idExercicio, TipoExercicio tipoExercicio, String descricao,LocalTime tempo, int repeticoes, int queimaCalorica,boolean privado,LocalDateTime dataCriacao, LocalDateTime dataAlteracao, int idParceiro)
-    {
-        this.idExercicio = idExercicio;
-        this.tipoExercicio = tipoExercicio.ordinal();
-        this.descricao = descricao;
-        this.tempo = tempo;
-        this.repeticoes = repeticoes;
-        this.queimaCalorica = queimaCalorica;
-		this.privado = privado;
-        this.dataCriacao = dataCriacao;
-        this.dataAlteracao = dataAlteracao;
-        this.parceiro.setIdParceiro(idParceiro);
-    }
-
-    public void setIdExercicio(int idExercicio) {
-		this.idExercicio = idExercicio;
+    private LocalTime  tempo;
+    private int t_r_atividades_id_registro_atividade;
+    
+    public int getId_atividade_fisica() {
+		return id_atividade_fisica;
 	}
-
-	public int getIdExercicio() {
-		return idExercicio;
+    
+	public void setId_atividade_fisica(int id_atividade_fisica) {
+		this.id_atividade_fisica = id_atividade_fisica;
 	}
-
-    public void setTipoExercicio(TipoExercicio tipoExercicio) {
-		this.tipoExercicio = tipoExercicio.ordinal();
+	
+	public char getNm_atividade() {
+		return nm_atividade;
 	}
-
-	public int getTipoExercicio() {
-		return tipoExercicio;
+	
+	public void setNm_atividade(char nm_atividade) {
+		this.nm_atividade = nm_atividade;
 	}
-
-    public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	
+	public char getDs_atividade() {
+		return ds_atividade;
 	}
-
-	public String getDescricao() {
-		return descricao;
+	
+	public void setDs_atividade(char ds_atividade) {
+		this.ds_atividade = ds_atividade;
 	}
-
-    public void setTempo(LocalTime  tempo) {
-		this.tempo = tempo;
+	
+	public char getCategoria_atividade() {
+		return categoria_atividade;
 	}
-
-	public LocalTime  getTempo() {
-		return tempo;
+	
+	public void setCategoria_atividade(char categoria_atividade) {
+		this.categoria_atividade = categoria_atividade;
 	}
-
-    public void setRepeticoes(int repeticoes) {
-		this.repeticoes = repeticoes;
+	
+	public float getCalorias() {
+		return calorias;
 	}
-
+	
+	public void setCalorias(float calorias) {
+		this.calorias = calorias;
+	}
+	
 	public int getRepeticoes() {
 		return repeticoes;
 	}
-
-    public void setQueimaCalorica(int queimaCalorica) {
-		this.queimaCalorica = queimaCalorica;
+	
+	public void setRepeticoes(int repeticoes) {
+		this.repeticoes = repeticoes;
 	}
-
-	public int getQueimaCalorica() {
-		return queimaCalorica;
+	
+	public LocalTime getTempo() {
+		return tempo;
 	}
-
-	public void setPrivado(Boolean privado) {
-		this.privado = privado;
+	
+	public void setTempo(LocalTime tempo) {
+		this.tempo = tempo;
 	}
-
-	public boolean getPrivado() {
-		return privado;
+	
+	public int getT_r_atividades_id_registro_atividade() {
+		return t_r_atividades_id_registro_atividade;
 	}
-
-    public LocalDateTime getDataCriacao() {
-		return dataCriacao;
+	
+	public void setT_r_atividades_id_registro_atividade(int t_r_atividades_id_registro_atividade) {
+		this.t_r_atividades_id_registro_atividade = t_r_atividades_id_registro_atividade;
 	}
-
-	public void setDataCriacao(LocalDateTime dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
-    
-    public LocalDateTime getDataAlteracao() {
-		return dataAlteracao;
-	}
-
-	public void setDataAlteracao(LocalDateTime dataAlteracao) {
-		this.dataAlteracao = dataAlteracao;
-	}
-
-    public void setIdParceiro(int idParceiro) {
-		this.parceiro.setIdParceiro(idParceiro);
-	}
-
-	public int getIdParceiro() {
-		return parceiro.getIdParceiro();
-	}
-    
-    public AtividadeFisica consultarExercicio(int idExercicio)
-    {
-        return exercicios.stream().filter(x -> x.getIdExercicio() == idExercicio).collect(Collectors.toList()).get(0);
-    }
-
-    public void AdicionarExercicio(AtividadeFisica item)
-    {
-        exercicios.add(item);
-    }
 }
